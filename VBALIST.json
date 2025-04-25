@@ -1,0 +1,14 @@
+[
+    {
+        "name": "ConsoleHISL3 Nhập chung danh mục Loại CDHA Loại XN Loại PTTT",
+        "function": "Nhập DM HIS L3",
+        "guideline": "Hướng dẫn sử dụng: 111",
+        "code": "(async () => {\n  const loaiXNList = [\n    { loai: 'Huyết học', mota: '1' },\n    { loai: 'Hóa sinh', mota: '2' },\n    { loai: 'Nước tiểu', mota: '3' },\n    { loai: 'Vi sinh', mota: '4' },\n    { loai: 'Loại khác', mota: '5' }\n  ];\n  const loaiCDHAList = [\n    { loai: 'Siêu âm', mota: 'SA' },\n    { loai: 'X Quang', mota: 'XQ' },\n    { loai: 'Điện tim', mota: 'DT' },\n    { loai: 'Nội soi', mota: 'NS' },\n    { loai: 'Thăm dò chức năng', mota: 'TDCN' }\n  ];\n  const loaiPTTTlist = [\n    { maloai: 'E', tenLoai: 'Khám bệnh', uuTien: '1' },\n    { maloai: 'PT', tenLoai: 'Phẫu thuật', uuTien: '2' },\n    { maloai: 'TT', tenLoai: 'Thủ thuật', uuTien: '3' },\n  ];\n  const importBtn = document.createElement('button');\n  importBtn.textContent = '📥 Import Dữ Liệu';\n  importBtn.style = 'position: fixed; top: 10px; left: 10px; z-index: 9999; padding: 10px 15px; background: #e53935; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;';\n  document.body.appendChild(importBtn);\n  importBtn.onclick = async () => {\n    // Dữ liệu import vào...\n  };\n})();"
+    },
+    {
+        "name": "ConsoleHISL4 Nhập danh mục Loại Xét nghiệm",
+        "function": "Nhập DM HIS L4",
+        "guideline": "Hướng dẫn sử dụng: 222",
+        "code": "(async () => {\n  const loaiXNList = [\n    { loai: 'Huyết học', mota: '1' },\n    { loai: 'Hóa sinh', mota: '2' },\n    { loai: 'Nước tiểu', mota: '3' },\n    { loai: 'Vi sinh', mota: '4' },\n    { loai: 'Loại khác', mota: '5' }\n  ];\n  const importBtn = document.createElement('button');\n  importBtn.textContent = '📥 Import Dữ Liệu';\n  document.body.appendChild(importBtn);\n  importBtn.onclick = async () => {\n    // Dữ liệu import vào...\n  };\n})();"
+    }
+]
