@@ -1,194 +1,830 @@
 [
     {
-        "name": "ConsoleHISL3 Nhập chung danh mục Loại CDHA Loại XN Loại PTTT",
-        "function": "Nhập DM HIS L3",
-        "guideline": "Hướng dẫn sử dụng: 111",
-        "code": "(async () => {\n  const loaiXNList = [\n    { loai: 'Huyết học', mota: '1' },\n    { loai: 'Hóa sinh', mota: '2' },\n    { loai: 'Nước tiểu', mota: '3' },\n    { loai: 'Vi sinh', mota: '4' },\n    { loai: 'Loại khác', mota: '5' }\n  ];\n  const loaiCDHAList = [\n    { loai: 'Siêu âm', mota: 'SA' },\n    { loai: 'X Quang', mota: 'XQ' },\n    { loai: 'Điện tim', mota: 'DT' },\n    { loai: 'Nội soi', mota: 'NS' },\n    { loai: 'Thăm dò chức năng', mota: 'TDCN' }\n  ];\n  const loaiPTTTlist = [\n    { maloai: 'E', tenLoai: 'Khám bệnh', uuTien: '1' },\n    { maloai: 'PT', tenLoai: 'Phẫu thuật', uuTien: '2' },\n    { maloai: 'TT', tenLoai: 'Thủ thuật', uuTien: '3' },\n  ];\n  const importBtn = document.createElement('button');\n  importBtn.textContent = '📥 Import Dữ Liệu';\n  importBtn.style = 'position: fixed; top: 10px; left: 10px; z-index: 9999; padding: 10px 15px; background: #e53935; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;';\n  document.body.appendChild(importBtn);\n  importBtn.onclick = async () => {\n    // Dữ liệu import vào...\n  };\n})();"
+        "name": "UPDATE _THUOC_BND_mới nhất",
+        "function": "UPDATE _THUOC_BND_mới nhất",
+        "guidelin": "Nhập vào folder XML --> chạp code",
+        "code": "########## V2- bản chuẩn cuối 16/04/2025 Xử lý 6 tham số thuốc\nFile Excel: update: TEN_THUOC TT_THAU_OLD TT_THAU_NEW SDK_OLD SDK_NEW HAM_LUONG_OLD HAM_LUONG_NEW DUONG_DUNG_OLD DUONG_DUNG_NEW TEN_THUOC_OLD TEN_THUOC_NEW MA_THUOC_OLD MA_THUOC_NEW\nFunction RemoveDiacritics(ByVal txt As String) As String\n    Dim i As Integer\n    Dim charCode As Integer\n    Dim result As String\n    result = \"\"\""
     },
     {
-        "name": "SELECT tạo DM BV Bắc Thăng Long",
-        "function": "SELECT tạo DM BV Bắc Thăng Long",
-        "guideline": "SELECT tạo DM BV Bắc Thăng Long",
-"code" : "select
-  bang1.MA_THUOC,
-  bang1.TEN_THUOC,
-  bang1.HAM_LUONG,
-  bang1.MA_DUONG_DUNG,
-  bang1.SO_DANG_KY,
-  bang1.TT_THAU,
-  bang2.TT_THAU
-from
-  bang1
-  JOIN bang2 ON bang1.MA_THUOC = bang2.MA_THUOC
-  and bang1.TEN_THUOC = bang2.TEN_THUOC
-  and bang1.HAM_LUONG = bang2.HAM_LUONG
-  and bang1.MA_DUONG_DUNG = bang2.MA_DUONG_DUNG
-  and bang1.SO_DANG_KY = bang2.SO_DANG_KY
-  and bang1.TT_THAU <> bang2.TT_THAU;
-
-  
-  
-select
-  bang1.MA_THUOC,
-  bang1.TEN_THUOC,
-  bang1.HAM_LUONG,
-  bang1.MA_DUONG_DUNG,
-  bang1.SO_DANG_KY,
-  bang1.TT_THAU
-from
-  bang1
-where
-  bang1.TEN_THUOC = 'Colistin';
-  
-  
-  
-SELECT
-  bang2.MA_THUOC,
-  bang2.TEN_THUOC,
-  bang2.HAM_LUONG,
-  bang2.MA_DUONG_DUNG,
-  bang2.SO_DANG_KY,
-  bang2.TT_THAU,
-  bang1.TT_THAU as [ TT_THAU Bảng 1 ]
-FROM
-  bang2
-  JOIN bang1 ON bang1.MA_THUOC = bang2.MA_THUOC
-  AND bang1.TEN_THUOC = bang2.TEN_THUOC
-  AND bang1.HAM_LUONG = bang2.HAM_LUONG
-  AND bang1.MA_DUONG_DUNG = bang2.MA_DUONG_DUNG
-  AND bang1.SO_DANG_KY = bang2.SO_DANG_KY
-  where bang1.TT_THAU <> bang2.TT_THAU;
-  
- SELECT
-  bang2.HO_TEN,
-  bang2.MA_BHXH,
-  bang2.MA_KHOA
-FROM
-  bang2
-LEFT JOIN
-  bang1 ON bang2.HO_TEN = bang1.HO_TEN 
-        AND bang2.MA_BHXH = bang1.MA_BHXH
-WHERE
-  bang1.HO_TEN IS NULL;
-  
- 
-SELECT
-  bang2.HO_TEN,
-  bang2.MA_BHXH,
-  bang2.MA_KHOA
-FROM
-  bang2
-WHERE
-  NOT EXISTS (
-    SELECT 1
-    FROM bang1
-    WHERE bang2.HO_TEN = bang1.HO_TEN
-      AND bang2.MA_BHXH = bang1.MA_BHXH
-  );
-
-
-SELECT
-  bang2.HO_TEN,
-  bang2.MA_BHXH,
-  bang2.MA_KHOA
-FROM
-  bang2
-JOIN
-  bang1 ON bang2.HO_TEN = bang1.HO_TEN 
-WHERE
-  bang2.MA_BHXH <> bang1.MA_BHXH;
-  
-
-
-
-
-#### Tạo DM Thuốc từ DM BV BTL
-SELECT 
-    bang1.MANHOM AS MA_NHOM, 
-    bang1.MALOAI AS MA_LOAI,
-	bang1.TENNHOM AS TEN_NHOM_KHONG_DUNG,
-    bang1.MAHC5084 AS MA_HOAT_CHAT, 
-    bang1.TENHC HOAT_CHAT, 
-    '' AS STT,
-    '' AS MA_ACT, 
-    bang1.MAHC5084 AS MA_BYT,
-    bang1.SODK AS SO_DANG_KY,
-    bang1.MA AS MA_THUOC,
-    bang1.TEN AS TEN_THUOC,
-    bang1.HAMLUONG AS HAM_LUONG, 
-    bang1.DANG AS DON_VI_TINH, 
-    bang1.DONVI AS DONG_GOI, 
-    bang1.DUONGDUNG2182 AS MA_DUONG_DUNG, 
-    bang1.DUONGDUNG AS DUONG_DUNG, 
-    bang1.HAMLUONG AS LIEU_LUONG, 
-    bang1.TENHANG AS HANG_SX, 
-    bang1.TENNUOC AS NUOC_SX, 
-    bang1.TENNX AS NHA_CUNG_CAP, 
-    bang1.LOAITHAU AS MA_NHOM_THAU, 
-    '' AS GOI_THAU, 
-    '' AS SO_GOI_THAU, 
-    '' AS DANGBAOCHE, 
-    '' AS TYLEHUHAO, 
-    bang1.TTTHAU AS QUYET_DINH, 
-    '' AS CONG_BO, 
-    '' AS STT_THAU, 
-    bang1.TENBD AS TEN_GIAM_DINH_BH, 
-    bang1.BHYT AS BHYT_CHI_TRA, 
-    bang1.DONGIA AS GIA_BHYT_QUYET_TOAN, 
-    bang1.DONGIA AS GIA_THAU, 
-    bang1.DONGIA AS GIA_BAN, 
-    bang1.MA AS MA_THUOC_BV, 
-    bang1.DONGIA AS GIA_BHYT, 
-    bang1.DONGIA AS GIA_DICH_VU, 
-	'' AS NGUONCT, 
-    '' AS THUOCPHONGXA, 
-    '' AS DUOCPHEPKELE, 
-    '' AS VITHUOCYHCT, 
-    '' AS KETRUNGHOATCHAT, 
-    bang1.TENIN AS THUOCTANDUOC, 
-    '' AS CHEPHAMYHCT, 
-    '' AS THUOCKHANGSINH, 
-    '' AS KHONGTINHXNT, 
-    '' AS DANHSTTDUNGTHUOC, 
-    '' AS THUOCNHIEUHOATCHAT, 
-    '' AS THUOCKEDON, 
-    '' AS TIENCHATGNHT, 
-    '' AS QLTHEOTUIMAU, 
-    '' AS DUOCDUYETLE, 
-    '' AS THUOCDIEUTRILAO, 
-    '' AS THUOCCORTICOID, 
-    '' AS SOGIAYPHEP, 
-    '' AS NHOM_BHXH, 
-    bang1.TTTHAU AS THAUGHEP, 
-    '' AS MA_PP_CHEBIEN, 
-    '' AS MAHIEUSP
-FROM 
-    bang1
-JOIN 
-    bang2 ON bang1.MA = bang2.MA;
-	
-######## Tạo DVKT từ DM BV Bắc Thăng Long
-SELECT 
-    bang1.MA AS MA_DICH_VU,
-    bang1.TEN AS TEN_DICH_VU,
-    bang1.TEN_LOAI AS MA_NHOM,
-    bang1.NHOMBHXH AS NHOM_BHXH_KHONG_DUNG,
-    bang1.TEN_NHOM AS NHOM_BHYT,
-    bang1.MA5084 AS MA_BHYT,
-    bang1.DVT AS DON_VI_TINH,
-    bang1.GIA_BH AS GIA_BHYT,
-    bang1.GIA_TH AS GIA_VIEN_PHI,
-    bang1.GIA_DV AS GIA_YEU_CAU,
-    bang1.GIA_NN AS GIA_NUOC_NGOAI,
-    bang1.QUYETDINH AS QUYET_DINH,
-    '20241115' AS NGAY_CONG_BO,
-    '' AS STT_MAU_21,  
-    bang1.MA5084 AS MA_BYT_MAU_21,
-    bang1.MATT37 AS MA_TT_37,
-    bang1.MATT43 AS MA_TT_4350,
-    bang1.TEN43 AS TEN_BAO_HIEM,
-    '' AS LOAI_PTTT,
-    '' AS MA_CHUYEN_KHOA,
-    bang1.TEN43 AS TEN_BH_MOI
-FROM bang1;"    },
+        "name": "    ' Duyệt từng ký tự trong chuỗi và thay thế trực tiếp",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    For i = 1 To Len(txt)",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        charCode = AscW(Mid(txt, i, 1))",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        Select Case charCode",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            ' Chữ a",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            Case 192, 193, 194, 195, 224, 225, 226, 227, 7840 To 7843, 7844 To 7851: result = result & \"\"a\"\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            ' Chữ e",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            Case 200, 201, 202, 232, 233, 234, 7864 To 7867, 7868 To 7871: result = result & \"\"e\"\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            ' Chữ i",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            Case 204, 205, 236, 237, 7880, 7881: result = result & \"\"i\"\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            ' Chữ o",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            Case 210, 211, 212, 213, 242, 243, 244, 245, 7884 To 7887, 7888 To 7895: result = result & \"\"o\"\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            ' Chữ u",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            Case 217, 218, 219, 249, 250, 251, 7908 To 7911, 7912 To 7915: result = result & \"\"u\"\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            ' Chữ y",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            Case 221, 253, 7922 To 7925: result = result & \"\"y\"\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            ' Chữ đ",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            Case 272, 273: result = result & \"\"d\"\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            ' Ký tự khác giữ nguyên",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            Case Else: result = result & Mid(txt, i, 1)",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        End Select",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Next i",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    RemoveDiacritics = result",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "End Function",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "Sub UpdateXMLData()",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim xmlDoc As Object",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim chiTietThuoc As Object",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim dsachChiTietThuoc As Object",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim ws As Worksheet",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim lastRow As Long",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim dict1 As Object, dict2 As Object, dict3 As Object",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim dict4 As Object, dict5 As Object, dict6 As Object",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim key As String",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim i As Long ' Biến vòng lặp",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim ttThauOldExcel As String, ttThauNewExcel As String",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim tenThuocExcel As String, tenThuocOldExcel As String, tenThuocNewExcel As String",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim hamLuongOldExcel As String, hamLuongNewExcel As String",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim duongDungOldExcel As String, duongDungNewExcel As String, maThuocNewExcel As String",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim sdkOldExcel As String, sdkNewExcel As String, maThuocOldExcel As String",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim ttThauXML As String, tenThuocXML As String",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim hamLuongXML As String, duongDungXML As String, sdkXML As String, maThuocXML As String",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim folderPath As String, outputFolder As String",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Dim fileName As String, newFileName As String",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    ' Định nghĩa đường dẫn",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    folderPath = \"\"D:\\DONVI\\BND\\DUOC\\THANG4\\XML_BHXH_20250416\\\"\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    outputFolder = \"\"D:\\DONVI\\BND\\DUOC\\THANG4\\XML_BHXH_20250416_UPDATED\\\"\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    ' Lấy dữ liệu từ Excel",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Set ws = ThisWorkbook.Sheets(\"\"update\"\")",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    lastRow = ws.Cells(ws.Rows.Count, \"\"A\"\").End(xlUp).Row",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    ' Tạo Dictionary để lưu thông tin thuốc từ Excel",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Set dict1 = CreateObject(\"\"Scripting.Dictionary\"\")",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Set dict2 = CreateObject(\"\"Scripting.Dictionary\"\")",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Set dict3 = CreateObject(\"\"Scripting.Dictionary\"\")",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Set dict4 = CreateObject(\"\"Scripting.Dictionary\"\")",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Set dict5 = CreateObject(\"\"Scripting.Dictionary\"\")",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": " Set dict6 = CreateObject(\"\"Scripting.Dictionary\"\")",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    ' Lưu thông tin từ Excel vào Dictionary, đã loại bỏ dấu tiếng Việt",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    For i = 2 To lastRow",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        tenThuocExcel = RemoveDiacritics(ws.Cells(i, 1).Value)",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        ttThauOldExcel = RemoveDiacritics(ws.Cells(i, 2).Value)",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        ttThauNewExcel = ws.Cells(i, 3).Value",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        sdkOldExcel = RemoveDiacritics(ws.Cells(i, 4).Value)",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        sdkNewExcel = ws.Cells(i, 5).Value",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        hamLuongOldExcel = RemoveDiacritics(ws.Cells(i, 6).Value)",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        hamLuongNewExcel = ws.Cells(i, 7).Value        ",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        duongDungOldExcel = RemoveDiacritics(ws.Cells(i, 8).Value)",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        duongDungNewExcel = ws.Cells(i, 9).Value",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        tenThuocOldExcel = RemoveDiacritics(ws.Cells(i, 10).Value)",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        tenThuocNewExcel = ws.Cells(i, 11).Value",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "  maThuocOldExcel = RemoveDiacritics(ws.Cells(i, 12).Value)",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        maThuocNewExcel = ws.Cells(i, 13).Value",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        key = Trim(tenThuocOldExcel) & \"\"|\"\" & Trim(ttThauOldExcel) & \"\"|\"\" & Trim(hamLuongOldExcel) & \"\"|\"\" & Trim(duongDungOldExcel) & \"\"|\"\" & Trim(sdkOldExcel) & \"\"|\"\" & Trim(maThuocOldExcel)",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        If Not dict1.Exists(key) Then",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            dict1(key) = hamLuongNewExcel",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            dict2(key) = duongDungNewExcel",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            dict3(key) = tenThuocNewExcel",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            dict4(key) = ttThauNewExcel",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            dict5(key) = sdkNewExcel",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "   dict6(key) = maThuocNewExcel",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        End If",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Next i",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    ' Duyệt tất cả các file XML trong thư mục",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    fileName = Dir(folderPath & \"\"*.xml\"\")",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Do While fileName <> \"\"\"\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        Set xmlDoc = CreateObject(\"\"MSXML2.DOMDocument\"\")",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        xmlDoc.async = False",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        xmlDoc.validateOnParse = False",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        xmlDoc.Load folderPath & fileName",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        ' Lấy danh sách thuốc từ XML",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        Set dsachChiTietThuoc = xmlDoc.getElementsByTagName(\"\"CHI_TIET_THUOC\"\")",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        ' Cập nhật dữ liệu trong XML theo Dictionary từ Excel",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        For Each chiTietThuoc In dsachChiTietThuoc",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    On Error Resume Next",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    If Not chiTietThuoc Is Nothing Then",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        ' Kiểm tra từng thẻ trước khi đọc dữ liệu",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        If chiTietThuoc.getElementsByTagName(\"\"TEN_THUOC\"\").Length > 0 Then tenThuocXML = RemoveDiacritics(chiTietThuoc.getElementsByTagName(\"\"TEN_THUOC\"\")(0).Text)",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        If chiTietThuoc.getElementsByTagName(\"\"TT_THAU\"\").Length > 0 Then ttThauXML = RemoveDiacritics(chiTietThuoc.getElementsByTagName(\"\"TT_THAU\"\")(0).Text)",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        If chiTietThuoc.getElementsByTagName(\"\"HAM_LUONG\"\").Length > 0 Then hamLuongXML = RemoveDiacritics(chiTietThuoc.getElementsByTagName(\"\"HAM_LUONG\"\")(0).Text)",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        If chiTietThuoc.getElementsByTagName(\"\"DUONG_DUNG\"\").Length > 0 Then duongDungXML = RemoveDiacritics(chiTietThuoc.getElementsByTagName(\"\"DUONG_DUNG\"\")(0).Text)",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        If chiTietThuoc.getElementsByTagName(\"\"SO_DANG_KY\"\").Length > 0 Then sdkXML = RemoveDiacritics(chiTietThuoc.getElementsByTagName(\"\"SO_DANG_KY\"\")(0).Text)",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "  If chiTietThuoc.getElementsByTagName(\"\"MA_THUOC\"\").Length > 0 Then maThuocXML = RemoveDiacritics(chiTietThuoc.getElementsByTagName(\"\"MA_THUOC\"\")(0).Text)",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        key = Trim(tenThuocXML) & \"\"|\"\" & Trim(ttThauXML) & \"\"|\"\" & Trim(hamLuongXML) & \"\"|\"\" & Trim(duongDungXML) & \"\"|\"\" & Trim(sdkXML) & \"\"|\"\" & Trim(maThuocXML)",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        If dict1.Exists(key) Then",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            chiTietThuoc.getElementsByTagName(\"\"HAM_LUONG\"\")(0).Text = \"\"\"\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            chiTietThuoc.getElementsByTagName(\"\"HAM_LUONG\"\")(0).AppendChild xmlDoc.createCDATASection(dict1(key))",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            chiTietThuoc.getElementsByTagName(\"\"DUONG_DUNG\"\")(0).Text = \"\"\"\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            chiTietThuoc.getElementsByTagName(\"\"DUONG_DUNG\"\")(0).AppendChild xmlDoc.createCDATASection(dict2(key))",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            chiTietThuoc.getElementsByTagName(\"\"TEN_THUOC\"\")(0).Text = \"\"\"\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            chiTietThuoc.getElementsByTagName(\"\"TEN_THUOC\"\")(0).AppendChild xmlDoc.createCDATASection(dict3(key))",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            chiTietThuoc.getElementsByTagName(\"\"TT_THAU\"\")(0).Text = \"\"\"\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            chiTietThuoc.getElementsByTagName(\"\"TT_THAU\"\")(0).AppendChild xmlDoc.createCDATASection(dict4(key))",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            chiTietThuoc.getElementsByTagName(\"\"SO_DANG_KY\"\")(0).Text = \"\"\"\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            chiTietThuoc.getElementsByTagName(\"\"SO_DANG_KY\"\")(0).AppendChild xmlDoc.createCDATASection(dict5(key))",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "   chiTietThuoc.getElementsByTagName(\"\"MA_THUOC\"\")(0).Text = \"\"\"\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "            chiTietThuoc.getElementsByTagName(\"\"MA_THUOC\"\")(0).AppendChild xmlDoc.createCDATASection(dict6(key))",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        End If",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    End If",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    On Error GoTo 0",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "Next chiTietThuoc",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        ' Lấy tên file mới từ thẻ MA_BN trong TONG_HOP",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        On Error Resume Next",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        newFileName = xmlDoc.getElementsByTagName(\"\"TONG_HOP\"\")(0).getElementsByTagName(\"\"MA_BN\"\")(0).Text",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        If newFileName = \"\"\"\" Then newFileName = Left(fileName, Len(fileName) - 4) ' Dùng tên file cũ nếu không tìm thấy",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        On Error GoTo 0",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        ' Lưu file XML đã cập nhật",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        xmlDoc.Save outputFolder & \"\"updated_\"\" & newFileName & \"\".xml\"\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        ' Lấy file tiếp theo",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "        fileName = Dir",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    Loop",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "    MsgBox \"\"XONG! Tất cả file đã được cập nhật!\"\", vbInformation",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    },
+    {
+        "name": "End Sub\"",
+        "function": "",
+        "guidelin": "",
+        "code": ""
+    }
 ]
