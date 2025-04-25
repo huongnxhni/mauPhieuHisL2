@@ -190,5 +190,5 @@ SELECT
     '' AS LOAI_PTTT,
     '' AS MA_CHUYEN_KHOA,
     bang1.TEN43 AS TEN_BH_MOI
-FROM bang1;"    }
+FROM bang1;"    },
 ]
